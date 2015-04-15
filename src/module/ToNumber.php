@@ -16,7 +16,7 @@ class ToNumber extends BaseTransaction {
 
 
    public function execute(&$package) {
-      $package[$this->result] = intval($package[$this->field]);
+      $package[$this->result] = doubleval($package[$this->field]);
       return TransactionStatus::OK;
    }
 }

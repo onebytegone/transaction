@@ -17,18 +17,32 @@ class OutputGenerator {
       self::printModule($module);
       self::printPackage($package);
 
+      echo '<div class="clear"></div>';
       echo '</div>';
    }
 
    public static function printModule($module) {
       echo '<div class="module">';
-
+      echo '<h3>Config:</h3>';
+      echo self::generateTableFromArray(get_object_vars($module));
       echo '</div>';
    }
 
    public static function printPackage($package) {
       echo '<div class="package">';
-      print_r($package);
+      echo '<h3>Package:</h3>';
+      echo self::generateTableFromArray($package);
       echo '</div>';
+   }
+
+   private static function generateTableFromArray($values) {
+      $output = '<table>';
+      $output .= '<tr><td>Field</td><td>Value</td></tr>';
+      $output .= join(array_map(function ($key, $value) {
+         return "<tr><td>{$key}</td><td>{$value}</td></tr>";
+      }, array_keys($values), $values), "\n");
+      $output .= '</table>';
+
+      return $output;
    }
 }

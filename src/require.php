@@ -10,3 +10,4 @@ require 'module/math/Subtract.php';
 require 'module/math/Multiply.php';
 require 'module/math/Divide.php';
 require 'module/math/SquareRoot.php';
+require 'module/math/Power.php';

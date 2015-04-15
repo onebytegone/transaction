@@ -3,30 +3,25 @@
 /**
  * A PHP example of transactional data processing
  *
+ * Example: demo-equivalent.php?rate=0.01&principal=5000&compound=4&years=1
+ *
  * @copyright 2015 Ethan Smith
  */
 
-$a = '5';
-$b = '6';
-$c = '1';
-$a = intval($a);
-$b = intval($b);
-$c = intval($c);
-$negB = -$b;
-$fourAC = 4 * $a * $c;
-$b2 = $b * $b;
-$sqrtOut = sqrt($b2 - $fourAC);
-$twoA = 2 * $a;
-$val1 = $negB + $sqrtOut;
-$val2 = $negB - $sqrtOut;
-$x_1 = $val1 / $twoA;
-$x_2 = $val2 / $twoA;
+$rate = $_GET["rate"];
+$principal = $_GET["principal"];
+$compoundCount = $_GET["compound"];
+$years = $_GET["years"];
 
-echo $x_1;
-echo $x_2;
+$rate = doubleval($rate);
+$principal = doubleval($principal);
+$compoundCount = doubleval($compoundCount);
+$years = doubleval($years);
 
-$x_1 = (-$b + sqrt($b*$b - 4 * $a * $c))/(2 * $a);
-$x_2 = (-$b - sqrt($b*$b - 4 * $a * $c))/(2 * $a);
+$res = $principal * pow( 1 + $rate / $compoundCount, $compoundCount * $years );
 
-echo $x_1;
-echo $x_2;
+echo "rate: {$rate}<br>";
+echo "principal: {$principal}<br>";
+echo "compound: {$compoundCount}<br>";
+echo "years: {$years}<br>";
+echo "Resulting amount: {$res}<br>";

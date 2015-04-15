@@ -41,6 +41,7 @@ $transactions = array(
 
 // Execute process
 $status = TransactionStatus::OK;
+$output = ''; // Place to store output
 foreach ($transactions as $module) {
    $status = $module->execute($stateObject);
 
@@ -48,9 +49,19 @@ foreach ($transactions as $module) {
       break;
    }
 
-   OutputGenerator::printOutput($module, $stateObject);
+   $output .= OutputGenerator::summarize($module, $stateObject);
 }
 
-
-// Report final status
-echo "Final Status: {$status}";
+// Output data
+echo "<h2>Results</h2>";
+echo "<table class=\"output\">";
+echo "<tr><td>Item</td><td>Value</td></tr>";
+echo "<tr><td>Process final status:</td><td>{$status}</td></tr>";
+if ($status == TransactionStatus::OK) {
+   echo "<tr><td>Initial value:</td><td>".$stateObject['principal']."</td></tr>";
+   echo "<tr><td>Total after ".$stateObject['years']." years:</td><td>".$stateObject['result']."</td></tr>";
+   echo "<tr><td>Rate per period:</td><td>".$stateObject['rate_per_period']."</td></tr>";
+}
+echo "</table>";
+echo "<h2>Stages</h2>";
+echo $output;

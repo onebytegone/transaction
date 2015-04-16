@@ -20,6 +20,17 @@ h2 {
    font-size: 2em;
 }
 
+form {
+   display: table;
+}
+form div {
+   display: table-row;
+}
+form span, form input {
+   display: table-cell;
+   padding: 3px;
+}
+
 .module {
    float: left;
 }

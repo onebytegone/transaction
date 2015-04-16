@@ -21,7 +21,9 @@
          <div><span>Years:</span><input type="text" value="<?php echo $_GET['years'] ?>" name="years"></div>
          <div><input type="submit" value="Calculate"></div>
       </form>
+      <br>
    </div>
+   <hr>
    <?php require 'src/demo.php'; ?>
 </body>
 </html>

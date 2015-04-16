@@ -53,6 +53,7 @@ foreach ($transactions as $module) {
 }
 
 // Output data
+echo "<div>";
 echo "<h2>Results</h2>";
 echo "<table class=\"output\">";
 echo "<tr><td>Item</td><td>Value</td></tr>";
@@ -63,5 +64,8 @@ if ($status == TransactionStatus::OK) {
    echo "<tr><td>Rate per period:</td><td>".$stateObject['rate_per_period']."</td></tr>";
 }
 echo "</table>";
+echo "</div>";
+echo "<div>";
 echo "<h2>Stages</h2>";
 echo $output;
+echo "</div>";
